@@ -1,0 +1,16 @@
+GET http://127.0.0.1:5000/users
+
+###
+
+GET http://127.0.0.1:5000/users/1
+
+###
+
+POST http://127.0.0.1:5000/users
+Content-Type: application/json
+
+{
+  "firstName": "User3",
+  "lastName": "Userovich3",
+  "email": "test3@test.test"
+}
