@@ -2,7 +2,7 @@ GET http://127.0.0.1:5000/users
 
 ###
 
-GET http://127.0.0.1:5000/users/1
+GET http://127.0.0.1:5000/users/6d736e73-7a58-4c8b-bf48-1868e5e1e567
 
 ###
 
@@ -10,7 +10,7 @@ POST http://127.0.0.1:5000/users
 Content-Type: application/json
 
 {
-  "firstName": "User3",
+  "firstName": "User007",
   "lastName": "Userovich3",
   "email": "test3@test.test"
 }

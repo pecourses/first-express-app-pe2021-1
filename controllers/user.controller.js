@@ -1,30 +1,14 @@
-const { v4: uuidv4 } = require('uuid');
-
-const usersDb = [
-  {
-    id: uuidv4(),
-    firstName: 'User1',
-    lastName: 'Userovich1',
-    email: 'test1@test.test',
-  },
-  {
-    id: uuidv4(),
-    firstName: 'User2',
-    lastName: 'Userovich2',
-    email: 'test2@test.test',
-  },
-];
+const User = require('./../models/user');
 
 module.exports.getUsers = (req, res) => {
-  res.status(200).send(usersDb);
+  const foundUsers = User.getUsers();
+  res.status(200).send(foundUsers);
 };
 
 module.exports.createUser = (req, res) => {
   const { body } = req;
-  console.log(`body`, body);
 
-  const createdUser = { ...body, id: uuidv4() };
-  usersDb.push(createdUser);
+  const createdUser = User.createUser(body);
 
   res.status(201).send(createdUser);
 };
@@ -34,13 +18,13 @@ module.exports.getUserById = (req, res) => {
     params: { userId },
   } = req;
 
-  const [foundUser] = usersDb.filter(u => u.id == userId);
+  const foundUser = User.getUserById(userId);
 
   if (foundUser) {
     res.status(200).send(foundUser);
+  } else {
+    res.status(404).send('User not found');
   }
-
-  res.status(404).send('User not found');
 };
 
 module.exports.updateUser = (req, res) => {};
